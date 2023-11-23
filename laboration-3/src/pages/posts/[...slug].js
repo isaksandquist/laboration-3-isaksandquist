@@ -1,16 +1,19 @@
 import React from 'react'
 import client from '../../../apolloClient';
 import { gql } from '@apollo/client';
-import Link from 'next/link'
+import Footer from '../footer.js';
+import styles from '@/styles/Home.module.css';
 
 export default function PostPage({post, posts}) {
     return (
-        <div>
-            <h1>{post.title}</h1>
+        <main className={`${styles.main}`}>
             <img src={post.coverImage.url} alt="" width="400px;" />
-            <div dangerouslySetInnerHTML={{__html:post.description.html}}/>
-            <br/><Link href={`/`}>Home page</Link>
-        </div>
+            <h2 className={styles.title2}>{post.title}</h2>
+            <div className={styles.description}>
+                <div dangerouslySetInnerHTML={{__html:post.description.html}}/>
+            </div>
+            <Footer/>
+        </main>
     )
 }
 
